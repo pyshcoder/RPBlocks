@@ -13,14 +13,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 // Lets define our mod, shall we? :)
-@Mod(name="RP World", version="1.0a", modid = "rpworld")
+@Mod(name="RP World", version="1.1a", modid = "rpworld")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class RPWorld {
 	
+	// Define our instance
 	@Instance("RPWorld")
 	public static RPWorld instance;
 	
-	
+	// Define our proxy
 	@SidedProxy(clientSide="com.kronosad.mods.rpworld.client.ClientProxy", serverSide="com.kronosad.mods.rpworld.CommonProxy")
 	public static CommonProxy proxy;
 	
@@ -57,7 +58,9 @@ public class RPWorld {
 	@Init
 	public void load(FMLInitializationEvent event){
 		
-		System.out.println("Registering Mod!");
+		
+		// Inform Forge to pre-render our texture.
+		proxy.registerRenders();
 		
 		 // Actually put blocks into the game
 		GameRegistry.registerBlock(basalt);

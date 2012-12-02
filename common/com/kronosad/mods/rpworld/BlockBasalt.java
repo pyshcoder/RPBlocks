@@ -12,16 +12,17 @@ public class BlockBasalt extends Block{
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	
+	// Tell the game where our texture file is.
 	public String getTextureFile(){
 		return CommonProxy.BLOCK_PNG;
 	}
 	
+	// For some reaosn, the game needs this..
 	public int blockIndexInTexture(){
 		return 24;
 	}
 
-
+	// Tell the game to drop Basalt cobblestone when mined instead of plain basalt
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return RPWorld.basaltCobblestone.blockID;

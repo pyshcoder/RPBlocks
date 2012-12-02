@@ -11,11 +11,12 @@ public class BlockMarbleBrick extends Block {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	
+	// Tell the game where our texture file is
 	public String getTextureFile(){
 		return CommonProxy.BLOCK_PNG;
 	}
 	
+	// For some reason, the game needs this...
 	public int blockIndexInTexture(){
 		return 24;
 	}

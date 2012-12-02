@@ -10,6 +10,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ClientProxy extends CommonProxy{
 	
+	// Preload game texture
 	@Override
 	public void registerRenders(){
 		MinecraftForgeClient.preloadTexture(BLOCK_PNG);

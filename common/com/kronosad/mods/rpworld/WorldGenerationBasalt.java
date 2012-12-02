@@ -19,12 +19,13 @@ public class WorldGenerationBasalt implements IWorldGenerator {
 		case 0: generateSurface(world, random, chunkX*16, chunkZ*16);
 		}
 	}
-
+	
+	// Generate blocks in the world
 	private void generateSurface(World world, Random random, int blockX, int blockZ) {
 		int Xcoord = blockX + random.nextInt(16);
 		  int Ycoord = random.nextInt(100);
 		  int Zcoord = blockZ + random.nextInt(16);
-		  System.out.println("Basalt At: " + "X: " + Xcoord + " Y: " + Ycoord + " Z: " + Zcoord);
+		  //System.out.println("Basalt At: " + "X: " + Xcoord + " Y: " + Ycoord + " Z: " + Zcoord); - Debug purposes
 		  (new WorldGenMinable(RPWorld.basalt.blockID, 100)).generate(world, random, Xcoord, Ycoord, Zcoord);
 		
 	}
