@@ -1,0 +1,11 @@
+# Lets ignore ALL the source code that isn't mine!
+
+*
+common/
+minecraft/
+.DS_Store
+# Add back my source code
+
+!common/com
+!minecraft/com
+!.gitignore
