@@ -1,13 +1,18 @@
 package com.kronosad.mods.rpworld;
 
+import java.io.File;
+
 import net.minecraft.src.Block;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
+import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -25,31 +30,26 @@ public class RPWorld {
 	@SidedProxy(clientSide="com.kronosad.mods.rpworld.client.ClientProxy", serverSide="com.kronosad.mods.rpworld.CommonProxy")
 	public static CommonProxy proxy;
 	
+
+	// Define some more stuff
+	protected static File configPath;
+	protected static int basaltID, basaltBrickID, basaltCobbleID, marbleID, marbleBrickID;
 	
-	// Define blocks
+	public static Block basalt, basaltBrick, basaltCobblestone, marble, marbleBrick;
 	
 	
+	// Pre-Init stuff
+	@PreInit
+	public void preInit(FMLPreInitializationEvent event){
+		// Process config stuff and get Block IDs
+		
+		configPath = event.getSuggestedConfigurationFile();
+		ConfigurationManager config = new ConfigurationManager();
+		config.defaultConfig(configPath);
+		
+		
+	}
 	
-	public final static Block basalt = new BlockBasalt(501, 17, Material.rock)
-	.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
-	.setBlockName("Basalt");
-	
-	public final static Block basaltBrick = new BlockBasaltBrick(500, 20, Material.rock)
-	.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
-	.setBlockName("Basalt Brick");
-	
-	public final static Block basaltCobblestone = new BlockBasaltCobbleStone(504, 19, Material.rock)
-	.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
-	.setBlockName("Basalt Cobblestone");
-	
-	public final static Block marble = new BlockMarble(502, 16, Material.rock)
-	.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
-	.setBlockName("Marble");
-	
-	public final static Block marbleBrick = new BlockMarbleBrick(503, 18, Material.rock)
-	.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
-	.setBlockName("Marble Brick");
-	// End block definition
 	
 	// | The following code is called when the mod is loaded.
 	// V
@@ -57,6 +57,32 @@ public class RPWorld {
 	
 	@Init
 	public void load(FMLInitializationEvent event){
+		
+		
+		// Assign blocks
+		
+		
+		
+		basalt = new BlockBasalt(basaltID, 17, Material.rock)
+		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setBlockName("Basalt");
+		
+		basaltBrick = new BlockBasaltBrick(basaltBrickID, 20, Material.rock)
+		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setBlockName("Basalt Brick");
+		
+		basaltCobblestone = new BlockBasaltCobbleStone(basaltCobbleID, 19, Material.rock)
+		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setBlockName("Basalt Cobblestone");
+		
+		marble = new BlockMarble(marbleID, 16, Material.rock)
+		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setBlockName("Marble");
+		
+		marbleBrick = new BlockMarbleBrick(marbleBrickID, 18, Material.rock)
+		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setBlockName("Marble Brick");
+		// End block Assignments
 		
 		
 		// Inform Forge to pre-render our texture.
@@ -68,6 +94,7 @@ public class RPWorld {
 		GameRegistry.registerBlock(basaltCobblestone);
 		GameRegistry.registerBlock(marble);
 		GameRegistry.registerBlock(marbleBrick);
+		
 		
 		// Define world generation
 		GameRegistry.registerWorldGenerator(new WorldGenerationBasalt());
