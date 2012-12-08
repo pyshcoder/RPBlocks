@@ -18,7 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 // Lets define our mod, shall we? :)
-@Mod(name="RP World", version="1.1a", modid = "rpworld")
+@Mod(name="RP World", version="1.2a", modid = "rpworld")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class RPWorld {
 	
@@ -64,23 +64,23 @@ public class RPWorld {
 		
 		
 		basalt = new BlockBasalt(basaltID, 17, Material.rock)
-		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setHardness(1.5F).setStepSound(Block.soundStoneFootstep)
 		.setBlockName("Basalt");
 		
 		basaltBrick = new BlockBasaltBrick(basaltBrickID, 20, Material.rock)
-		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setHardness(1.5F).setStepSound(Block.soundStoneFootstep)
 		.setBlockName("Basalt Brick");
 		
 		basaltCobblestone = new BlockBasaltCobbleStone(basaltCobbleID, 19, Material.rock)
-		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setHardness(1.5F).setStepSound(Block.soundStoneFootstep)
 		.setBlockName("Basalt Cobblestone");
 		
 		marble = new BlockMarble(marbleID, 16, Material.rock)
-		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setHardness(1.5F).setStepSound(Block.soundStoneFootstep)
 		.setBlockName("Marble");
 		
 		marbleBrick = new BlockMarbleBrick(marbleBrickID, 18, Material.rock)
-		.setHardness(0.5F).setStepSound(Block.soundStoneFootstep)
+		.setHardness(1.5F).setStepSound(Block.soundStoneFootstep)
 		.setBlockName("Marble Brick");
 		// End block Assignments
 		
